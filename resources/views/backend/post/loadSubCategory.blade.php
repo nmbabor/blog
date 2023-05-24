@@ -1,0 +1,1 @@
+{{Form::select('fk_sub_category_id',$subCategory,'',['class'=>'form-control','required','placeholder'=>'Select Sub Category','id'=>'subCategory'])}}
