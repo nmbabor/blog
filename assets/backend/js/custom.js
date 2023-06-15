@@ -125,7 +125,7 @@ $('body').on('change', '#files', function(){
                 reader.readAsDataURL(this.files[0]);
                
                 $(this).hide();
-                $("#abcd"+ abc).append($("<img/>", {id: 'img', src:'/public/img/x.png', alt: 'X',title: 'Delete'}).click(function() {
+                $("#abcd"+ abc).append($("<i class='fa fa-times delete-image'></i>").click(function() {
                 $(this).parent().parent().remove();
                 }));
 
@@ -148,7 +148,7 @@ $('body').on('change', '#files', function(){
     });
 
 /*============*/
-$('img#exist_img').click(function() {
+$('.delete-image.exist_img').click(function() {
     var exist_val = $(this).prev().val();
     $('<input name="del_photo[]" type="hidden" />').appendTo('#loadDelete').val(exist_val);
     $(this).parent().parent().remove();

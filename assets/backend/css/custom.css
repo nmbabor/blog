@@ -91,13 +91,10 @@ form.deleteForm{display: inline;}
     color:red;
     text-align: left;
 }
-#formdiv #img,#formdiv #exist_img{ 
-    width: 25px;
-    border: none; 
-    height:25px;
+#formdiv .delete-image{
+    border: none;
     cursor: pointer;
     margin-left: -20px;
-    margin-bottom: 91px;
 }
 
 #formdiv .abcd{

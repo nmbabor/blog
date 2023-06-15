@@ -2,11 +2,20 @@
 @section('content')
 <div class="tab_content">
 
-<h3 class="box_title">Add New 
+<h3 class="box_title">Add New
  <a href="{{route('pages.index')}}" class="btn btn-default pull-right"> <i class="ion ion-navicon-round"></i> View All </a></h3>
 	{!! Form::open(array('route' => 'pages.store','class'=>'form-horizontal','files'=>true)) !!}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="form-group  {{ $errors->has('link') ? 'has-error' : '' }}">
-            
+
             {{Form::label('link', 'Page link', array('class' => 'col-md-3 control-label'))}}
             <div class="col-md-8">
                 <div class="input-group">
@@ -30,19 +39,6 @@
             {{Form::label('title', 'Page Title', array('class' => 'col-md-3 control-label'))}}
             <div class="col-md-8">
                 {{Form::textArea('title','',array('class'=>'form-control','placeholder'=>'Page Title','required','rows'=>'2'))}}
-            </div>
-        </div>
-        <div class="form-group {{ $errors->has('file') ? 'has-error' : '' }}">
-            {{Form::label('file', 'Pdf file', array('class' => 'col-md-3 control-label'))}}
-            <div class="col-md-8">
-                {{Form::file('file',array('class'=>'form-control'))}}
-                 @if ($errors->has('file'))
-                        <span class="help-block" style="display:block">
-                            <strong>{{ $errors->first('file') }}</strong>
-                        </span>
-                    @endif
-                    <br>
-                    <b>OR</b>
             </div>
         </div>
         <div class="form-group">
@@ -71,14 +67,14 @@
                         </div>
                     </div>
                 </div>
-                @if ($errors->has('photo'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('photo') }}</strong>
-                    </span>
-                @endif
+                @error('photo')
+                <div class="help-block">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
          </div>
-        
+
         <div class="from-group col-md-6 multiple_upload">
         <!-- Load multiple photo -->
         </div>
